@@ -62,8 +62,8 @@
 
             <q-item-section>
               <q-select
-                v-model="lang"
-                :options="langOptions"
+                v-model="language"
+                :options="languageOptions"
                 dense
                 borderless
                 emit-value
@@ -103,17 +103,10 @@ export default {
 
   data() {
     return {
-      lang: this.$i18n.locale,
-      langOptions: [
+      languageOptions: [
         { value: 'en-us', label: 'English' },
         { value: 'pt-br', label: 'Português' }
       ]
-    }
-  },
-
-  watch: {
-    lang(lang) {
-      this.$i18n.locale = lang
     }
   },
 
@@ -122,12 +115,21 @@ export default {
       'user',
     ]),
 
+    language: {
+      get () {
+        return this.$store.state.timelog.language
+      },
+      set (language) {
+        this.$store.commit('SET_LANGUAGE', language)
+      }
+    },
+
     leftDrawerOpen: {
       get () {
         return this.$store.state.timelog.leftDrawerOpen
       },
-      set (value) {
-        this.$store.commit('SET_LEFT_DRAWER_OPEN', value)
+      set (open) {
+        this.$store.commit('SET_LEFT_DRAWER_OPEN', open)
       }
     }
   }

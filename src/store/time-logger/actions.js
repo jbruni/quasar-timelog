@@ -1,3 +1,18 @@
+import Vue from 'vue'
+import { LocalStorage } from 'quasar'
+
+export function saveState({ state }) {
+  LocalStorage.set('timelog-state', JSON.stringify(state))
+}
+
+export function loadState({ commit }) {
+  const state = JSON.parse(LocalStorage.getItem('timelog-state') || '{}')
+  commit('LOAD_STATE', state)
+  if (state.language) {
+    Vue.nextTick(() => commit('SET_LANGUAGE', state.language))
+  }
+}
+
 export function addTask ({ state, commit, dispatch }, newTask) {
   const currentTask = state.tasks[0]
   if (currentTask) {

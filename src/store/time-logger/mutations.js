@@ -1,3 +1,11 @@
+export function LOAD_STATE (state, savedState) {
+  Object.assign(state, savedState)
+}
+
+export function SET_LANGUAGE (state, language) {
+  state.language = language
+}
+
 export function SET_LEFT_DRAWER_OPEN (state, payload) {
   state.leftDrawerOpen = Boolean(payload)
 }
