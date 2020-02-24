@@ -12,7 +12,7 @@
         />
       </q-toolbar>
       <div class="q-px-lg q-pt-xl q-mb-md">
-        <div class="text-h3">{{ appTitle }}</div>
+        <div class="text-h3">{{ $t('appTitle') }}</div>
       </div>
       <q-img
         src="statics/images/clocks.jpg"
@@ -23,7 +23,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       :width="200"
-      :breakpoint="500"
+      :breakpoint="725"
     >
       <q-scroll-area style="height: calc(100% - 164px); margin-top: 164px; border-right: 1px solid #ddd">
         <q-list padding>
@@ -37,7 +37,7 @@
             </q-item-section>
 
             <q-item-section>
-              Time
+              {{ $t('time') }}
             </q-item-section>
           </q-item>
 
@@ -51,7 +51,26 @@
             </q-item-section>
 
             <q-item-section>
-              Help
+              {{ $t('help') }}
+            </q-item-section>
+          </q-item>
+
+          <q-item>
+            <q-item-section avatar>
+              <q-icon name="language" />
+            </q-item-section>
+
+            <q-item-section>
+              <q-select
+                v-model="lang"
+                :options="langOptions"
+                dense
+                borderless
+                emit-value
+                map-options
+                options-dense
+                style="min-width: 150px"
+              />
             </q-item-section>
           </q-item>
         </q-list>
@@ -82,9 +101,24 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'MainLayout',
 
+  data() {
+    return {
+      lang: this.$i18n.locale,
+      langOptions: [
+        { value: 'en-us', label: 'English' },
+        { value: 'pt-br', label: 'Português' }
+      ]
+    }
+  },
+
+  watch: {
+    lang(lang) {
+      this.$i18n.locale = lang
+    }
+  },
+
   computed: {
     ...mapGetters([
-      'appTitle',
       'user',
     ]),
 
