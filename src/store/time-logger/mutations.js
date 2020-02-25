@@ -28,3 +28,8 @@ export function REMOVE_TASK ({ tasks }, task) {
   const itemIndex = tasks.findIndex(item => item === task)
   tasks.splice(itemIndex, 1)
 }
+
+export function SET_TASK_DESCRIPTION ({ tasks }, { task, description }) {
+  const item = tasks.find(item => item === task)
+  item.description = String(description)
+}

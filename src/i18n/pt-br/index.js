@@ -9,6 +9,8 @@ export default {
   cancel: 'Cancelar',
   deleteConfirmMessage: 'Quer mesmo excluir os itens selecionados?',
   deleteNotification: 'Itens excluídos',
+  edit: 'Editar',
+  editTaskMessage: 'Atualize a descrição do item',
   noEntries: 'Lista vazia',
   instructions:
     '<p>Quando começar ou trocar de tarefa, digite o que você vai começar a fazer na caixa de texto e tecle Enter, ou clique no ícone de Adicionar.</p>\n' +

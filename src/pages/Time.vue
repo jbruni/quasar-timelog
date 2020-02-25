@@ -82,6 +82,15 @@
             color="primary"
             icon="stop" />
         </q-item-section>
+        <q-item-section side>
+          <q-btn
+            @click.stop="editTask(task)"
+            dense
+            flat
+            round
+            color="primary"
+            icon="edit" />
+        </q-item-section>
       </q-item>
     </q-list>
     <div
@@ -118,7 +127,8 @@ export default {
       'addTask',
       'toggleTask',
       'endTask',
-      'removeSelectedTasks'
+      'removeSelectedTasks',
+      'updateTaskDescription'
     ]),
     deleteSelectedTasks () {
       if (!this.selectedTasks.length) {
@@ -140,6 +150,20 @@ export default {
       }
       this.addTask(this.newTask)
       this.newTask = ''
+    },
+    editTask (task) {
+      this.$q.dialog({
+        title: this.$t('edit'),
+        message: this.$t('editTaskMessage'),
+        cancel: { label: this.$t('cancel') },
+        persistent: true,
+        prompt: {
+          model: task.description,
+          type: 'text'
+        }
+      }).onOk(description => {
+        this.updateTaskDescription({ task, description })
+      })
     }
   }
 }

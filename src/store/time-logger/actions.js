@@ -40,3 +40,7 @@ export function removeSelectedTasks({ getters, commit }) {
   const tasks = getters.selectedTasks
   tasks.forEach(task => commit('REMOVE_TASK', task))
 }
+
+export function updateTaskDescription ({ commit }, { task, description }) {
+  commit('SET_TASK_DESCRIPTION', { task, description })
+}

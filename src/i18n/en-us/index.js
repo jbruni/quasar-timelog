@@ -9,6 +9,8 @@ export default {
   cancel: 'Cancel',
   deleteConfirmMessage: 'Really delete the selected items?',
   deleteNotification: 'Time entries deleted',
+  edit: 'Edit',
+  editTaskMessage: 'Update the task description',
   noEntries: 'No entries',
   instructions:
     '<p>When starting or switching task, just type what you are about to do in the text input and press Enter, or hit the Plus icon.</p>\n' +
