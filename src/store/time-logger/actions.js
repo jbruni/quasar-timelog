@@ -15,7 +15,7 @@ export function loadState({ commit }) {
 
 export function addTask ({ state, commit, dispatch }, newTask) {
   const currentTask = state.tasks[0]
-  if (currentTask) {
+  if (currentTask && (currentTask.end === null)) {
     dispatch('endTask', currentTask)
   }
   const task = {
